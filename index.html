@@ -46,10 +46,14 @@
   <div class="upload-form">
     <h2>Uploader votre CV</h2>
     <form action="https://hook.eu2.make.com/ed2u46smj4a1bdmeq11g3labt7u4resd" method="POST" enctype="multipart/form-data">
-      <label for="cv">Choisir votre fichier (PDF seulement) :</label>
-      <input type="file" id="cv" name="cv" accept=".pdf" required>
+      <label for="message">Votre message :</label>
+      <input type="text" id="message" name="message" required>
+      
+      <label for="pdf">Choisir votre fichier (PDF seulement) :</label>
+      <input type="file" id="pdf" name="pdf" accept=".pdf" required>
+      
       <button type="submit">Envoyer</button>
-    </form>
+  </form>
   </div>
 </body>
 </html>

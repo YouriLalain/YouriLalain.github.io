@@ -222,6 +222,30 @@
         </div>
     </div>
 
+    <script>
+    document.getElementById("uploadForm").onsubmit = function(event) {
+        event.preventDefault(); // Empêche l'envoi par défaut
+        const formData = new FormData(this);
+
+        fetch(this.action, {
+            method: this.method,
+            body: formData,
+        })
+        .then(response => {
+            if (response.ok) {
+                // Redirige vers le lien souhaité après un envoi réussi
+                window.location.href = "https://www.google.com/?client=safari";
+            } else {
+                alert("Erreur lors de l'envoi. Veuillez réessayer.");
+            }
+        })
+        .catch(error => {
+            console.error("Erreur:", error);
+            alert("Une erreur est survenue. Veuillez réessayer.");
+        });
+    };
+</script>
+
     <!-- Footer Albatros -->
     <footer class="footer">
         <div class="footer-container">

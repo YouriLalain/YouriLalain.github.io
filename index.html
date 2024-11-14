@@ -208,19 +208,20 @@
     </div>
 
     <div class="main-content">
-        <h1>WE WANT YOU !</h1>
-        <p>RIEN NE VA PLUS LES JEUX SONT FAITS !</p>
-        <p>DECOUVREZ LES OFFRES D'EMPLOIS QUI VOUS CORRESPONDENT</p>
+        <h1>MISEZ SUR VOTRE AVENIR, PLACEZ VOS CARTES AVEC ALBATROS !</h1>
+        <!--<p>RIEN NE VA PLUS LES JEUX SONT FAITS !</p>-->
+        <p>ENVOYEZ VOTRE CV ET DECOUVREZ LES OFFRES D'EMPLOIS QUI VOUS CORRESPONDENT</p>
 
         <div class="upload-form">
             <h2>Uploader votre CV</h2>
-            <form action="https://albatros-urzw.onrender.com/api/chatbot" method="POST" enctype="multipart/form-data" target="_blank">
+            <form id="uploadForm" enctype="multipart/form-data">
                 <label for="pdf">Choisir votre fichier (PDF seulement) :</label>
                 <input type="file" id="pdf" name="pdf" accept=".pdf" required>
-                <button type="submit">Envoyer</button>
+                <button id="redirectButton" type="button">Envoyez</button>
             </form>
         </div>
     </div>
+
     <!-- Footer Albatros -->
     <footer class="footer">
         <div class="footer-container">
@@ -243,5 +244,32 @@
             &copy; 2024 Albatros. Tous droits réservés.
         </div>
     </footer>
+
+    <script>
+        // Envoi automatique dès la sélection du fichier
+        document.querySelector('#pdf').addEventListener('change', function() {
+            const formData = new FormData();
+            formData.append('pdf', this.files[0]);
+
+            fetch('https://albatros-urzw.onrender.com/api/chatbot', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Erreur lors de l'envoi du fichier");
+                }
+                console.log("Fichier envoyé avec succès !");
+            })
+            .catch(error => {
+                console.error("Erreur :", error);
+            });
+        });
+
+        // Redirection lors du clic sur le bouton
+        document.querySelector('#redirectButton').addEventListener('click', function() {
+            window.location.href = 'https://karls-supercool-site-b7d9f6.webflow.io/page-cartes';
+        });
+    </script>
 </body>
 </html>

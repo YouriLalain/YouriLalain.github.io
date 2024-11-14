@@ -214,7 +214,7 @@
 
         <div class="upload-form">
             <h2>Uploader votre CV</h2>
-            <form action="https://albatros-urzw.onrender.com/api/chatbot" method="POST" enctype="multipart/form-data" target="_blank">
+            <form id="uploadForm" action="https://albatros-urzw.onrender.com/api/chatbot" method="POST" enctype="multipart/form-data" target="_blank">
                 <label for="pdf">Choisir votre fichier (PDF seulement) :</label>
                 <input type="file" id="pdf" name="pdf" accept=".pdf" required>
                 <button type="submit">Envoyer</button>
@@ -234,7 +234,7 @@
         .then(response => {
             if (response.ok) {
                 // Redirige vers le lien souhaité après un envoi réussi
-                window.location.href = "https://www.google.com";
+                window.location.href = "https://www.ece.fr";
             } else {
                 return response.text().then(errorMessage => {
                     console.error("Erreur détaillée:", errorMessage);
